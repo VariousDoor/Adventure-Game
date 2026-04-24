@@ -1,2 +1,2 @@
 # Adventure-Game
-Adventure game
+Adventure game 1
