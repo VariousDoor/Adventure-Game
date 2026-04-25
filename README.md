@@ -1,2 +1,2 @@
 # Adventure-Game
-Adventure game 1.0 by rory and sam
+Adventure game 1.0 by sam and rory.
