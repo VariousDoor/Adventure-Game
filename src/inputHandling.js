@@ -7,7 +7,8 @@ const keyboard = {
   arrowdown: false,
   arrowleft: false,
   arrowright: false,
-  spacebar: false
+  spacebar: false,
+  enter: false
 };
 document.addEventListener('keydown', (e) => {
   if(e.code === "Space") keyboard.spacebar = true;
