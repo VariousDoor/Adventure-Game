@@ -1,19 +1,28 @@
-<!doctype html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Hello, sqlite3</title>
-  </head>
-  <body>
-    <script src="jswasm/sqlite3.js"></script>
-    <script src="demo-123.js"></script>
-    <script>
-        window.sqlite3InitModule().then(function(sqlite3){
-  // The module is now loaded and the sqlite3 namespace
-  // object was passed to this function.
-  console.log("sqlite3:", sqlite3);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>databasetest</p>
+  <script src="jswasm/sqlite3.js"></script>
+  <script>
+    window.sqlite3InitModule().then(function(sqlite3){
+  const capi = sqlite3.capi/*C-style API*/,
+          oo = sqlite3.oo1/*high-level OO API*/;
+    const db = new oo.DB("/mydb.sqlite3",'ct');
+    try {
+      db.exec("CREATE TABLE IF NOT EXISTS t(a,b)");
+      db.exec("INSERT INTO t VALUES(1,2),(3,4)");
+      const result = db.exec("SELECT * FROM t");
+      console.log(result);
+    }finally{
+      db.close();
+    }
 });
-    </script>
-  </body>
+  </script>
+
+</body>
 </html>
